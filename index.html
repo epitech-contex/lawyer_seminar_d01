@@ -29,17 +29,26 @@
 
 <hr>
 
-<form name="tableForm" onsubmit="addToTable()" action="#">
-    <label for="name-input">Name</label>
-    <input id="name-input" type="text" name="nameInput">
+<form name="tableForm" onsubmit="addToTable(event)" action="#">
+    <div class="mdl-textfield mdl-js-textfield">
+        <label class="mdl-textfield__label" for="name-input">Name</label>
+        <input class="mdl-textfield__input" id="name-input" type="text" name="nameInput">
+    </div>
 
-    <label for="age-input">Age</label>
-    <input id="age-input" type="number" name="ageInput">
+    <div class="mdl-textfield mdl-js-textfield">
+        <label class="mdl-textfield__label" for="age-input">Age</label>
+        <input class="mdl-textfield__input" id="age-input" type="number" name="ageInput">
+    </div>
 
-    <label for="participation-input">Participation</label>
-    <input id="participation-input" type="number" name="participationInput">
+    <div class="mdl-textfield mdl-js-textfield">
+        <label class="mdl-textfield__label" for="participation-input">Participation</label>
+        <input class="mdl-textfield__input" id="participation-input" type="number" name="participationInput">
+    </div>
 
-    <button type="submit">Add</button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+            type="submit">
+        Add
+    </button>
 </form>
 
 <hr>
@@ -85,18 +94,34 @@
     function validateForm() {
         let form = document.forms["tableForm"];
 
-        if (form["nameInput"].value === "")
+        let err = false;
+
+        if (form["nameInput"].value === "") {
             alert("Name must not be empty");
-        if (form["ageInput"].value === "")
+            err = true;
+        }
+        if (form["ageInput"].value === "") {
             alert("Age must not be empty");
-        if (form["participationInput"].value === "")
+            err = true;
+        }
+        if (form["participationInput"].value === "") {
             alert("Participation must not be empty");
+            err = true;
+        }
+
+        if (err)
+            return [];
 
         return [form["nameInput"].value, form["ageInput"].value, form["participationInput"].value]
     }
 
-    function addToTable() {
+    function addToTable(e) {
+        e.preventDefault();
+
         let vars = validateForm();
+
+        if (vars.length === 0)
+            return;
 
         let table = document.getElementById('participation-table');
 
@@ -111,6 +136,7 @@
         let participationText = document.createTextNode(vars[2]);
 
         nameTd.appendChild(nameText);
+        nameTd.classList.add("mdl-data-table__cell--non-numeric");
         ageTd.appendChild(ageText);
         participationTd.appendChild(participationText);
 
