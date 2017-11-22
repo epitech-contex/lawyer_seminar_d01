@@ -1,0 +1,288 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% EPITECH LaTeX template
+%%%                                    v2.1
+%%%
+%%%                Pierre ROBERT
+%%%                May 2017
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass
+	[a4paper,
+	 11pt     ,
+	 babel-en ;
+	]
+{article}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% packages
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[top=4cm, bottom=3cm, left=2cm , right=2cm]{geometry}
+\usepackage{courier}
+\usepackage{listings}
+\RequirePackage[unicode=true]{hyperref}
+\RequirePackage{Epitech}
+\RequirePackage{eso-pic}				% background image
+\RequirePackage{titlesec} 				% section formatting
+\RequirePackage{needspace}				% unbreakable (sub*)sections
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  basicstyle=\footnotesize\ttfamily,        % size of fonts used for the code
+  breaklines=true,                 % automatic line breaking only at whitespace
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  keywordstyle=\color{blue},       % keyword style
+  stringstyle=\color{mymauve},     % string literal style
+}
+
+\newcommand{\passthrough}[1]{#1}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% general settings
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcounter{page}{0}
+\thispagestyle{empty}
+
+\hypersetup{breaklinks=true,
+            pdfauthor={Epitech},
+            pdfsubject={Initiation au développement informatique},
+            pdftitle={Programme},
+            pdfcreator={Raphael Fourdrilis},
+            pdfkeywords={Epitech, Cap Gemini, Programme},
+            colorlinks=true,
+            citecolor=COLOR_light,
+            urlcolor=COLOR_light,
+            pdfborder={0 0 0}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% config
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newcommand{\moduleCode}{Cap Gemini}
+	\newcommand{\projectTitle}{Programme}
+	\newcommand{\projectSubtitle}{Initiation au développement informatique}
+	\newcommand{\backgroundImage}{./png/EpitechCapBackground.png}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% background image
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\bgimg}
+{
+  	\AddToShipoutPicture
+	{
+		\put(\LenToUnit{0 cm},\LenToUnit{0 cm})
+			{\includegraphics[decodearray={\FPprint{\redQtt} 1 \FPprint{\greenQtt} 1 \FPprint{\blueQtt} 1}]{\backgroundImage}}
+	}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%te%%%%%%%%%%%%%%
+%
+% section formatting
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\titlespacing{\section}{0px}{80px}{10px}
+\titleformat{\section}
+{\Needspace*{9\baselineskip}\LARGE\scshape\raggedright\bfseries}
+{}{0em}{}
+[\normalsize\vspace*{-14px}\_ \_ \_ \_ \_ \_ \hrulefill~\_ \_ \_ \_ \_\phantomsection]
+
+\titlespacing{\subsection}{100px}{20px}{\baselineskip}
+\titleformat{\subsection}
+{\Needspace*{5\baselineskip}\Large\scshape\raggedright\bfseries}
+{\hspace*{15px}+ }{0em}{}
+[\normalsize\vspace*{-12px}\hspace*{15px}\_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \_ \hrulefill~\_ \_ \_ \_ \_\phantomsection]
+
+
+\titlespacing{\subsubsection}{0px}{\baselineskip}{0px}
+\titleformat{\subsubsection}
+{\Needspace*{5\baselineskip}\Large\scshape\raggedright\bfseries}
+{}{0em}{}
+[\normalsize]
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% document
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+	\hideFromPandoc
+	\input{Epitech_template_modules-definition}
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% background image
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\bgimg
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% presentation page
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	{\center
+		\color{COLOR_main}
+			\IfSubStr{\semester}{-1}
+				{\textbf{\Huge{\moduleName}}}
+				{\textbf{\Huge{B\semester{} - \moduleName}}}
+				 \\	\vspace*{-0.2cm}
+		\color{COLOR_light} 	\rule{0.7 \textwidth}{1pt}\\
+		\color{COLOR_light} 	\LARGE{\moduleCode}\\
+		\vspace*{6cm}
+		\fontfamily{fco} \selectfont
+		\color{COLOR_red}   	\textbf{\HUGE{\projectTitle}}\\	\vspace*{-0.5cm}
+		\color{COLOR_redLight}	\rule{0.7 \textwidth}{1pt}\\
+		\color{COLOR_redLight}	\LARGE{\projectSubtitle} \\
+		\vspace*{2.5cm}
+		\includegraphics[height=150px]{logo.png}\\
+		\vfill \hfill
+		\color{COLOR_light}
+			 \small{1.1}
+			
+		\vspace*{0.2cm}
+	}
+	\newpage
+
+
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% formalities
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\addcontentsline{toc}{chapter}{\projectTitle}
+	\phantomsection
+	\addcontentsline{toc}{section}{\projectTitle}
+	 
+	\color{COLOR_dark}
+	\hypertarget{description-du-programme}{%
+\section{Description du programme}\label{description-du-programme}}
+
+Le programme est composé de deux demi-journées de cours et de quatre
+demi-journées de pratique de la programmation.
+
+L'apprentissage s'effectue à travers l'utilisation des outils de
+création et de modification du code ainsi qu'à travers la découverte
+empirique de technologies de développement informatique.
+
+\hypertarget{la-puxe9dagogie}{%
+\subsection{La pédagogie}\label{la-puxe9dagogie}}
+
+La pédagogie d'Epitech est axées autour de 3 compétences clés en
+informatique : la \emph{rigueur}, l'\emph{autonomie} et le
+\emph{professionnalisme}.
+
+L'école inversée y est pratiquée : la connaissance n'a que très peu de
+valeur ajoutée de nos jours, dû au fait qu'elle est très largement
+disponible sur Internet, et qu'elle tombe très vite en désuétude dans le
+domaine de l'informatique. A l'opposé, le travail de groupe, la
+recherche personnelle, la capacité d'analyse sont les aptitudes
+indispensables au traitement correct de cette quantité d'information
+disponible, aptitudes qui permettront au professionnel de l'informatique
+de se former continuellement sur les technologies en perpétuel
+renouvellement. C'est pourquoi les activités sont déroulées sous la
+forme de session de réflexion et de travail collectifs, au détriment des
+cours traditionnels : les objectif sont de trouver, trier et utiliser
+correctement la connaissance, et non de répéter celle (obsolète dans
+quelques années tout au plus) de l'enseignant.
+
+Enfin, nous ne pensons pas que la théorie soit un pré-requis à la
+pratique, bien au contraire ! Le paradigme traditionnel consiste à
+enseigner la théorie pour ensuite la mettre en pratique. Mais une
+théorie décorrélée du réel n'engendre aucune motivation chez
+l'apprenant, et semble souvent vide de sens\ldots{} Notre pédagogie se
+fonde au contraire sur le principe que la théorie doit répondre à une
+demande, motivée par la pratique. Le mode projet permet aux apprenants
+de se confronter à des problématiques nouvelles, de chercher leurs
+propres solutions en développant leur autonomie, leur capacité de
+recherche et de synthèse, mais aussi leur créativité ; en cas d'échec,
+la théorie trouve naturellement sa place en répondant aux questions
+qu'ils ont été amenés à se poser par eux-mêmes.
+
+Ce mode d'apprentissage, associé à une exigence de qualité et de rigueur
+extrêmes, permet de former des professionnels compétents et adaptés aux
+réalités du monde de l'informatique.
+
+TABLE PLACEHOLDER!
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Initiation aux concepts fondamentaux (ligne de commande, programme, IDE,
+langage, exécution).
+
+Installation des outils nécessaires pour le cours (Node, npm, Git,
+Heroku)
+
+\hypertarget{jour-1}{%
+\section{Jour 1}\label{jour-1}}
+
+\hypertarget{matin}{%
+\subsection{Matin}\label{matin}}
+
+Introduction des concepts de base, présentation du programme
+
+Découverte de différents concepts informatiques fondamentaux.
+
+Recherche accompagnée sur les concepts, installation des différents
+outils
+
+\hypertarget{apruxe8s-midi}{%
+\subsection{Après-midi}\label{apruxe8s-midi}}
+
+Expérimentation interactive sur la base d'un programme fourni
+
+Modification du code fourni et impact sur le programme
+
+Outils pour compiler et tester du code
+
+Outils pour partager du code. Principes de collaboration sur le code
+
+\hypertarget{jour-2}{%
+\section{Jour 2}\label{jour-2}}
+
+\hypertarget{matin-1}{%
+\subsection{Matin}\label{matin-1}}
+
+Création d'un site web.
+
+Utilisation de données issues d'une base de données locale.
+
+Stockage des données et accès aux données créées par l'utilisateur.
+
+\hypertarget{apruxe8s-midi-1}{%
+\subsection{Après-midi}\label{apruxe8s-midi-1}}
+
+Expérimentation sur le fonctionnement d'une application client/serveur
+
+Déploiement d'un site internet en ligne.
+
+Synthèse des différents concepts découverts
+
+Retour et échange avec les apprenants sur la formation.
+\end{document}

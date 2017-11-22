@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Development is great</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<p>Hello world! This date is: <span id="clock"></span></p>
+
+<div class="horizontal">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            id="toRedButton">
+        Turn on the red light!
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            id="toBlackButton">
+        Paint it black!
+    </button>
+</div>
+
+<hr>
+
+<form name="tableForm" onsubmit="addToTable()" action="#">
+    <label for="name-input">Name</label>
+    <input id="name-input" type="text" name="nameInput">
+
+    <label for="age-input">Age</label>
+    <input id="age-input" type="number" name="ageInput">
+
+    <label for="participation-input">Participation</label>
+    <input id="participation-input" type="number" name="participationInput">
+
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<table id="participation-table"
+       class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <thead>
+    <tr>
+        <th class="mdl-data-table__cell--non-numeric">Name</th>
+        <th>Age</th>
+        <th>Participation</th>
+    </tr>
+    </thead>
+</table>
+
+</body>
+<script>
+    function getDateTime() {
+        let today = new Date();
+        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        return date + ' ' + time;
+    }
+
+
+    function showDateTime() {
+        document.getElementById('clock').innerHTML = getDateTime();
+    }
+
+    showDateTime();
+
+    setInterval(showDateTime, 1000);
+
+    document.getElementById('toRedButton').onclick = function dateToRed() {
+        document.getElementById('clock').style.color = "red";
+    };
+
+    document.getElementById('toBlackButton').onclick = function dateToBlack() {
+        document.getElementById('clock').style.color = "black";
+    };
+
+
+    function validateForm() {
+        let form = document.forms["tableForm"];
+
+        if (form["nameInput"].value === "")
+            alert("Name must not be empty");
+        if (form["ageInput"].value === "")
+            alert("Age must not be empty");
+        if (form["participationInput"].value === "")
+            alert("Participation must not be empty");
+
+        return [form["nameInput"].value, form["ageInput"].value, form["participationInput"].value]
+    }
+
+    function addToTable() {
+        let vars = validateForm();
+
+        let table = document.getElementById('participation-table');
+
+        let tr = document.createElement('tr');
+
+        let nameTd = document.createElement('td');
+        let ageTd = document.createElement('td');
+        let participationTd = document.createElement('td');
+
+        let nameText = document.createTextNode(vars[0]);
+        let ageText = document.createTextNode(vars[1]);
+        let participationText = document.createTextNode(vars[2]);
+
+        nameTd.appendChild(nameText);
+        ageTd.appendChild(ageText);
+        participationTd.appendChild(participationText);
+
+        tr.appendChild(nameTd);
+        tr.appendChild(ageTd);
+        tr.appendChild(participationTd);
+
+        table.appendChild(tr);
+    }
+</script>
+</html>
