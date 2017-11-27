@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Development is great</title>
+
+    <!-- The viewport part goes here -->
+
+    <!-- This links HTML to CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<p>Hello world! This date is: <span id="clock"></span></p>
+
+<div class="horizontal">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            id="toRedButton">
+        Turn on the red light!
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+            id="toBlackButton">
+        Paint it black!
+    </button>
+</div>
+
+<hr>
+
+<form>
+    <div>
+        <label for="name-input">Name</label>
+        <input id="name-input" type="text" name="nameInput">
+    </div>
+
+    <div>
+        <label for="age-input">Age</label>
+        <input id="age-input" type="number" name="ageInput">
+    </div>
+
+    <div>
+        <label for="participation-input">Participation</label>
+        <input id="participation-input" type="number" name="participationInput">
+    </div>
+
+    <button type="submit">
+        Add
+    </button>
+</form>
+
+<hr>
+
+<table id="participation-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Participation</th>
+    </tr>
+    </thead>
+</table>
+
+</body>
+<script>
+    // This is a helper function to format the date and time
+    function getDateTime() {
+        // Create a date
+        let today = new Date();
+
+        // Format the date part
+        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+        // Format the time part
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        // Combine the two
+        let dateTime = date + ' ' + time;
+
+        // Give the result to the caller
+        return dateTime
+    }
+
+
+    // This function sets the content of the 'clock' element to the current date and time.
+    function showDateTime() {
+        document.getElementById('clock').innerHTML = getDateTime();
+    }
+
+    // We call it once so that it is shown instantly on page load.
+    showDateTime();
+
+    // This is a JavaScript helper allowing us to set an interval between calls.
+    // It refreshes the date and time every 1000ms (1sec)
+    setInterval(showDateTime, 1000);
+
+    document.getElementById('toBlackButton').onclick = function dateToBlack() {
+        document.getElementById('clock').classList.add("black");
+        document.getElementById('clock').classList.remove("red");
+    };
+
+    // Based on the previous function, here goes your dateToRed function
+
+</script>
+</html>

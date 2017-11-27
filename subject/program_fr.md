@@ -1,5 +1,5 @@
 ---
-module:			Cap Gemini
+module:			DLA Piper
 title:			Programme
 subtitle:		Initiation au développement informatique
 background:		'./png/EpitechCapBackground.png'
@@ -30,8 +30,6 @@ L'école inversée y est pratiquée : la connaissance n'a que très peu de valeu
 Enfin, nous ne pensons pas que la théorie soit un pré-requis à la pratique, bien au contraire ! Le paradigme traditionnel consiste à enseigner la théorie pour ensuite la mettre en pratique. Mais une théorie décorrélée du réel n'engendre aucune motivation chez l'apprenant, et semble souvent vide de sens… Notre pédagogie se fonde au contraire sur le principe que la théorie doit répondre à une demande, motivée par la pratique. Le mode projet permet aux apprenants de se confronter à des problématiques nouvelles, de chercher leurs propres solutions en développant leur autonomie, leur capacité de recherche et de synthèse, mais aussi leur créativité ; en cas d'échec, la théorie trouve naturellement sa place en répondant aux questions qu'ils ont été amenés à se poser par eux-mêmes.
 
 Ce mode d'apprentissage, associé à une exigence de qualité et de rigueur extrêmes, permet de former des professionnels compétents et adaptés aux réalités du monde de l'informatique.
-
-TABLE PLACEHOLDER!
 
 # Introduction
 

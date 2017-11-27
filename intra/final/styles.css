@@ -9,3 +9,11 @@ body {
     display: flex;
     flex-direction: row;
 }
+
+.black {
+    color: black;
+}
+
+.red {
+    color: red;
+}

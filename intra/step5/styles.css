@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+.black {
+    color: black;
+}
+
+.red {
+    color: red;
+}

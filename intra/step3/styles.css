@@ -1,0 +1,37 @@
+/*
+    Your 'body' selector goes under this comment block
+    it selects the body elements and applies whatever directives we put in
+ */
+
+/* This helper layouts the content horizontally */
+.horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+/*
+    '.red' is another type of selector. Notice how it starts with '.'
+    It selects every element with the 'red' class, thanks to the leading '.'
+ */
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+/*
+    This is just for the tutorial purposes.
+    Preceding a selector with '#' will select the element with the id following the '#'
+ */
+#an_id {
+    color: green;
+}
+
+/*
+    To recap:
+    '.' means 'select elements with this class'
+    '#' means 'select the element with this id'
+    just a tag means 'select every tag named like this'
+ */

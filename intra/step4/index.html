@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Development is great</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<p>Hello world! This date is: <span id="clock"></span></p>
+
+<div class="horizontal">
+    <button id="toRedButton">
+        Turn on the red light!
+    </button>
+    <button id="toBlackButton">
+        Paint it black!
+    </button>
+</div>
+
+<hr>
+
+<!--
+    onsubmit is the way to say 'call this function when I submit the form'.
+    action is supposed to point to the page we call on form submission. Here, we use '#' to say 'stay on the same page'
+    because we handle everything in the script tags at the bottom.
+-->
+
+<form name="tableForm" onsubmit="addToTable(event)" action="#">
+    <div>
+        <label for="name-input">Name</label>
+        <input id="name-input" type="text" name="nameInput">
+    </div>
+
+    <div>
+        <label for="age-input">Age</label>
+        <input id="age-input" type="number" name="ageInput">
+    </div>
+
+    <div>
+        <label for="participation-input">Participation</label>
+        <input id="participation-input" type="number" name="participationInput">
+    </div>
+
+    <button type="submit">
+        Add
+    </button>
+</form>
+
+<hr>
+
+<table id="participation-table">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Participation</th>
+    </tr>
+    </thead>
+</table>
+
+</body>
+<script>
+    // This is a helper function to format the date and time
+    function getDateTime() {
+        // Create a date
+        let today = new Date();
+
+        // Format the date part
+        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+        // Format the time part
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+        // Combine the two
+        let dateTime = date + ' ' + time;
+
+        // Give the result to the caller
+        return dateTime
+    }
+
+
+    // This function sets the content of the 'clock' element to the current date and time.
+    function showDateTime() {
+        document.getElementById('clock').innerHTML = getDateTime();
+    }
+
+    // We call it once so that it is shown instantly on page load.
+    showDateTime();
+
+    // This is a JavaScript helper allowing us to set an interval between calls.
+    // It refreshes the date and time every 1000ms (1sec)
+    setInterval(showDateTime, 1000);
+
+    // The two following calls add a 'callback' to our buttons, allowing them to actually do something
+    document.getElementById('toRedButton').onclick = function dateToRed() {
+        document.getElementById('clock').classList.add("red");
+        document.getElementById('clock').classList.remove("black");
+    };
+
+    document.getElementById('toBlackButton').onclick = function dateToBlack() {
+        document.getElementById('clock').classList.add("black");
+        document.getElementById('clock').classList.remove("red");
+    };
+
+
+    // This is our form validation logic.
+    function validateForm() {
+        // Get the form element
+        let form = document.forms["tableForm"];
+
+        let err = false;
+
+        // Handle the cases where any of the fields are left blank
+        if (form["nameInput"].value === "") {
+            // This call asks the browser (Firefox, Chrome...) to show an alert box containing the given text
+            alert("Name must not be empty");
+            err = true;
+        }
+        if (form["ageInput"].value === "") {
+            alert("Age must not be empty");
+            err = true;
+        }
+        if (form["participationInput"].value === "") {
+            alert("Participation must not be empty");
+            err = true;
+        }
+
+        // If any of the preceding tests was true, there is an error.
+        // The empty list we return will serve as an 'errorneous value' in the calling function.
+        if (err)
+            return [];
+
+        return [form["nameInput"].value, form["ageInput"].value, form["participationInput"].value]
+    }
+
+    // This function is referenced as the 'on-submit' handler of our form.
+    // It will be called each time we click on the submit button.
+    function addToTable(e) {
+        // This is just to prevent the page from reloading when we click on 'Submit'
+        // This wouldn't be present in production, because we would have a database containing the data.
+        // Here, reloading means losing the data -- hence, this call.
+        e.preventDefault();
+
+        // Get the result of the form validation
+        let vars = validateForm();
+
+        // If an error occured during form validation, don't execute the rest.
+        // Remember the empty list we return in case of error during validation
+        if (vars.length === 0)
+            return;
+
+        // Get the table element
+        let table = document.getElementById('participation-table');
+
+        // Create a new row with its contents
+        let tr = document.createElement('tr');
+
+        // Create each table definition
+        let nameTd = document.createElement('td');
+        let ageTd = document.createElement('td');
+        let participationTd = document.createElement('td');
+
+        // Set the content of the table elements to what the user entered
+        let nameText = document.createTextNode(vars[0]);
+
+        // Do the same for the last two fields, which are at index 1 and 2 of the 'vars' list
+        // Please call them 'ageText' and 'participationText' in order to make the rest of the code work with no
+        // modification.
+        // If you'd like to name them differently, you'll have to modify the following lines accordingly
+        // FIXME
+
+        // Compose the new row correctly
+        nameTd.appendChild(nameText);
+        ageTd.appendChild(ageText);
+        participationTd.appendChild(participationText);
+
+        tr.appendChild(nameTd);
+        tr.appendChild(ageTd);
+        tr.appendChild(participationTd);
+
+        // Finally, append the new row to the table
+        // FIXME
+    }
+</script>
+</html>
